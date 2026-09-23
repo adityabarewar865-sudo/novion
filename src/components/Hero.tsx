@@ -15,6 +15,24 @@ export default function Hero({ onOpenVideoModal }: { onOpenVideoModal: (title: s
       {/* Background ambient radial cyan light spots */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-cyan-500/15 via-blue-600/10 to-transparent blur-[120px] pointer-events-none rounded-full" />
 
+      {/* Giant Background Typography Statement Backdrop */}
+      <div
+        aria-hidden="true"
+        className="hero-backdrop-text absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none z-0 whitespace-nowrap text-center uppercase pl-[0.18em]"
+        style={{
+          fontFamily: "var(--font-orbitron), sans-serif",
+          fontWeight: 900,
+          letterSpacing: "0.18em",
+          fontSize: "clamp(5rem, 16vw, 18rem)",
+          background: "linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 210, 255, 0.02) 100%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          WebkitTextStroke: "1px rgba(0, 210, 255, 0.12)",
+        }}
+      >
+        NOVION
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
           {/* Logo Showcase Emblem */}

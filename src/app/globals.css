@@ -192,3 +192,21 @@ body {
 .transition-smooth {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Giant Hero Backdrop Typography Statement */
+.hero-backdrop-text {
+  font-family: var(--font-orbitron), sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  font-size: clamp(5rem, 16vw, 18rem);
+  line-height: 1;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 210, 255, 0.02) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 210, 255, 0.12);
+  text-shadow: 0 0 80px rgba(0, 210, 255, 0.05);
+  pointer-events: none;
+  user-select: none;
+}

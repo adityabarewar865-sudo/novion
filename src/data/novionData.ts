@@ -199,7 +199,7 @@ export const MEDIA_GALLERY: MediaItem[] = [
     category: "Battery Systems",
     description: "A thermal camera comparison demonstrating how predictive modeling identifies micro-hotspots before thermal runaway begins.",
     duration: "3:15",
-    thumbnail: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1200&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
     fallbackImage: "/images/media-thermal-video.svg",
     tags: ["Safety", "Thermal Modeling", "Early Warning"]
   },

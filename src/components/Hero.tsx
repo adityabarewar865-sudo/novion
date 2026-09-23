@@ -39,12 +39,12 @@ export default function Hero({ onOpenVideoModal }: { onOpenVideoModal: (title: s
             {/* Ambient soft glow beneath logo */}
             <div className="absolute -inset-4 bg-cyan-400/20 rounded-[2.5rem] blur-2xl -z-10 group-hover:bg-cyan-400/35 transition-all duration-500" />
 
-            {/* Scaled-up 1.5x-2x container (~130px to 150px) with rounded glassmorphism & 1px cyan border */}
+            {/* Scaled-up 1.5x-2x container (~140px to 160px) with rounded glassmorphism & 1px cyan border */}
             <div
-              className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 mx-auto rounded-[2rem] p-3.5 flex items-center justify-center relative overflow-hidden backdrop-blur-2xl transition-all duration-500 group-hover:scale-105"
+              className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 mx-auto rounded-[2rem] p-2.5 flex items-center justify-center relative overflow-hidden backdrop-blur-2xl transition-all duration-500 group-hover:scale-105"
               style={{
-                background: "rgba(10, 14, 23, 0.8)",
-                border: "1px solid rgba(0, 210, 255, 0.35)",
+                background: "rgba(10, 14, 23, 0.85)",
+                border: "1px solid rgba(0, 210, 255, 0.4)",
                 boxShadow: "0 0 35px rgba(0, 210, 255, 0.3), inset 0 0 20px rgba(0, 210, 255, 0.08)",
               }}
             >

@@ -10,15 +10,24 @@ export function NovionLogo({
 }) {
   return (
     <div className={`relative flex items-center justify-center shrink-0 ${className}`}>
-      <div className="w-full h-full rounded-xl overflow-hidden border border-cyan-400/40 shadow-[0_0_15px_rgba(0,210,255,0.4)] bg-slate-950 relative group flex items-center justify-center">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
+      {showBackdrop ? (
+        <div className="w-full h-full rounded-xl overflow-hidden border border-cyan-400/40 shadow-[0_0_15px_rgba(0,210,255,0.4)] bg-slate-950 relative group flex items-center justify-center p-0.5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={NOVION_LOGO_BASE64}
+            alt="Novion Metallic Lightning Arrow Logo"
+            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none rounded-lg"
+          />
+          <div className="absolute inset-0 bg-cyan-400/10 pointer-events-none mix-blend-screen" />
+        </div>
+      ) : (
+        /* eslint-disable-next-line @next/next/no-img-element */
         <img
           src={NOVION_LOGO_BASE64}
-          alt="Novion Logo"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
+          alt="Novion Metallic Lightning Arrow Logo"
+          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"
         />
-        <div className="absolute inset-0 bg-cyan-400/10 pointer-events-none mix-blend-screen" />
-      </div>
+      )}
     </div>
   );
 }

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cloudBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070c16" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#080e1a" />
+    </linearGradient>
+    <linearGradient id="chartGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="380" rx="16" fill="url(#cloudBg)" stroke="#1e293b" stroke-width="2" />
+
+  <!-- Mock Dashboard Header -->
+  <rect x="40" y="30" width="520" height="42" rx="8" fill="#1e293b" />
+  <circle cx="65" cy="51" r="5" fill="#ef4444" />
+  <circle cx="82" cy="51" r="5" fill="#f59e0b" />
+  <circle cx="99" cy="51" r="5" fill="#38bdf8" />
+  <rect x="130" y="41" width="220" height="20" rx="4" fill="#0f172a" />
+  <text x="145" y="55" fill="#94a3b8" font-family="monospace" font-size="10">cloud.novion.energy/telematics/bess-fleet-04</text>
+  <rect x="450" y="41" width="90" height="20" rx="4" fill="#0284c7" />
+  <text x="462" y="55" fill="#f0f9ff" font-family="system-ui, sans-serif" font-size="10" font-weight="600">LIVE SYNC</text>
+
+  <!-- Left Telematics Chart -->
+  <rect x="40" y="85" width="310" height="200" rx="10" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+  <text x="58" y="112" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Digital Twin Telemetry Curve</text>
+  <text x="58" y="128" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">Real-time SOH degradation vs Predictive AI Model</text>
+
+  <!-- Chart Area -->
+  <path d="M60 230 C 110 210, 160 215, 210 190 C 260 170, 290 175, 330 150 L 330 250 L 60 250 Z" fill="url(#chartGrad)" />
+  <path d="M60 230 C 110 210, 160 215, 210 190 C 260 170, 290 175, 330 150" fill="none" stroke="#38bdf8" stroke-width="2.5" />
+  <path d="M60 232 C 110 220, 160 225, 210 205 C 260 190, 290 195, 330 175" fill="none" stroke="#93c5fd" stroke-width="2" stroke-dasharray="4,4" />
+
+  <text x="60" y="270" fill="#64748b" font-family="system-ui, sans-serif" font-size="9">Cycle 0</text>
+  <text x="145" y="270" fill="#64748b" font-family="system-ui, sans-serif" font-size="9">Cycle 800</text>
+  <text x="230" y="270" fill="#64748b" font-family="system-ui, sans-serif" font-size="9">Cycle 1600</text>
+  <text x="300" y="270" fill="#64748b" font-family="system-ui, sans-serif" font-size="9">Cycle 2500+</text>
+
+  <!-- Right KPIs -->
+  <g transform="translate(365, 85)">
+    <rect width="195" height="60" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+    <text x="16" y="26" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">Active Grid Energy (BESS)</text>
+    <text x="16" y="48" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="18" font-weight="700">14.8 MWh</text>
+
+    <rect y="70" width="195" height="60" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+    <text x="16" y="96" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">Fleet Connected Packs</text>
+    <text x="16" y="118" fill="#0ea5e9" font-family="system-ui, sans-serif" font-size="18" font-weight="700">1,248 Units</text>
+
+    <rect y="140" width="195" height="60" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+    <text x="16" y="166" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">Cloud Anomaly Alerts</text>
+    <text x="16" y="188" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="18" font-weight="700">0 Critical</text>
+  </g>
+
+  <!-- Bottom Notification Bar -->
+  <rect x="40" y="300" width="520" height="48" rx="8" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <circle cx="65" cy="324" r="6" fill="#38bdf8" />
+  <text x="85" y="328" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="11" font-weight="600">
+    OTA Firmware Update 2.4.1 Active · Neural Model Retrained on 14M Field Hours
+  </text>
+</svg>

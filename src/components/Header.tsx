@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { NovionLogo, SearchIcon, CloseIcon, MenuIcon, ArrowRightIcon } from "@/components/Icons";
-import { SearchResult } from "@/app/api/search/route";
+import { searchNovion, SearchResult } from "@/utils/searchEngine";
 
 export default function Header() {
   const pathname = usePathname();
@@ -27,7 +27,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Debounced search effect calling backend API
+  // Instant client-side search with debounce
   useEffect(() => {
     if (!searchQuery.trim()) {
       setSearchResults([]);
@@ -36,19 +36,16 @@ export default function Header() {
     }
 
     setIsSearching(true);
-    const timeoutId = setTimeout(async () => {
+    const timeoutId = setTimeout(() => {
       try {
-        const res = await fetch(`/api/search?q=${encodeURIComponent(searchQuery.trim())}`);
-        if (res.ok) {
-          const data = await res.json();
-          setSearchResults(data.results || []);
-        }
+        const results = searchNovion(searchQuery.trim());
+        setSearchResults(results);
       } catch (err) {
-        console.error("Search API fetch failed:", err);
+        console.error("Search execution failed:", err);
       } finally {
         setIsSearching(false);
       }
-    }, 220);
+    }, 150);
 
     return () => clearTimeout(timeoutId);
   }, [searchQuery]);

@@ -1,4 +1,3 @@
-import { NextRequest, NextResponse } from "next/server";
 import { COMPANY_INFO, CORE_FOCUS_AREAS, SOLUTIONS, MEDIA_GALLERY } from "@/data/novionData";
 
 export interface SearchResult {
@@ -11,44 +10,28 @@ export interface SearchResult {
   score: number;
 }
 
-export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const query = (searchParams.get("q") || "").trim().toLowerCase();
-
-  if (!query) {
-    return NextResponse.json({ results: [], query: "" });
-  }
+export function searchNovion(rawQuery: string): SearchResult[] {
+  const query = (rawQuery || "").trim().toLowerCase();
+  if (!query) return [];
 
   const queryTerms = query.split(/\s+/).filter(Boolean);
   const results: SearchResult[] = [];
 
-  // Helper function to calculate matching score & generate snippet
   const evaluateText = (text: string, title: string): { score: number; snippet: string } => {
     let score = 0;
     const lowerText = text.toLowerCase();
     const lowerTitle = title.toLowerCase();
 
-    // Exact phrase match in title
-    if (lowerTitle.includes(query)) {
-      score += 50;
-    }
+    if (lowerTitle.includes(query)) score += 50;
+    if (lowerText.includes(query)) score += 25;
 
-    // Exact phrase match in body
-    if (lowerText.includes(query)) {
-      score += 25;
-    }
-
-    // Term by term match
     for (const term of queryTerms) {
       if (lowerTitle.includes(term)) score += 15;
       if (lowerText.includes(term)) score += 5;
     }
 
-    if (score === 0) {
-      return { score: 0, snippet: "" };
-    }
+    if (score === 0) return { score: 0, snippet: "" };
 
-    // Generate snippet centered around first match
     let firstIndex = lowerText.indexOf(queryTerms[0]);
     if (firstIndex === -1) firstIndex = 0;
     const start = Math.max(0, firstIndex - 40);
@@ -126,12 +109,6 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  // Sort by relevance score descending
   results.sort((a, b) => b.score - a.score);
-
-  return NextResponse.json({
-    query,
-    total: results.length,
-    results
-  });
+  return results;
 }

@@ -4,10 +4,11 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { COMPANY_INFO, CORE_FOCUS_AREAS } from "@/data/novionData";
-import { CpuIcon, FlameIcon, BatteryIcon, ShieldCheckIcon, CheckCircleIcon, ArrowRightIcon, MailIcon, LinkedInIcon } from "@/components/Icons";
+import { CpuIcon, FlameIcon, BatteryIcon, ShieldCheckIcon, CheckCircleIcon, ArrowRightIcon, MailIcon, LinkedInIcon, NovionLogo } from "@/components/Icons";
 
 export default function CompanySection() {
   const [activeFocusIdx, setActiveFocusIdx] = useState(0);
+  const [photoError, setPhotoError] = useState(false);
 
   const getFocusIcon = (iconName: string) => {
     switch (iconName) {
@@ -50,15 +51,26 @@ export default function CompanySection() {
             {/* Owner Photo Container */}
             <div className="lg:col-span-5 flex flex-col items-center">
               <div className="relative w-full max-w-sm aspect-[3/4] rounded-3xl overflow-hidden border border-white/15 shadow-[0_8px_32px_0_rgba(0,0,0,0.7)] bg-black/60 group">
-                <Image
-                  src={COMPANY_INFO.photo}
-                  alt={COMPANY_INFO.owner}
-                  fill
-                  priority
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                />
+                {!photoError ? (
+                  <Image
+                    src={COMPANY_INFO.photo}
+                    alt={COMPANY_INFO.owner}
+                    fill
+                    priority
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    onError={() => setPhotoError(true)}
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 to-black p-6 text-center">
+                    <div className="w-24 h-24 rounded-full bg-cyan-950/80 border-2 border-cyan-400/50 flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(0,210,255,0.3)]">
+                      <span className="text-3xl font-black font-orbitron metallic-text">JB</span>
+                    </div>
+                    <span className="text-base font-bold font-orbitron text-white">{COMPANY_INFO.owner}</span>
+                    <span className="text-xs font-mono text-cyan-400 mt-1">{COMPANY_INFO.role}</span>
+                  </div>
+                )}
                 {/* Gradient overlays for cinematic effect */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-80 pointer-events-none" />
                 
                 {/* Badges on Photo */}
                 <div className="absolute bottom-4 left-4 right-4">
@@ -188,17 +200,8 @@ export default function CompanySection() {
 
           {/* Corporate Metadata & Logo Card */}
           <div className="lg:col-span-4 space-y-6">
-            {/* Brand Logo Card */}
             <div className="glass-panel rounded-3xl p-6 flex items-center gap-4">
-              <div className="w-16 h-16 rounded-2xl overflow-hidden border border-white/15 bg-black/60 shrink-0 shadow-lg p-0.5">
-                <Image
-                  src="/images/novion-logo.jpg"
-                  alt="Novion Emblem"
-                  width={64}
-                  height={64}
-                  className="w-full h-full object-cover rounded-xl"
-                />
-              </div>
+              <NovionLogo className="w-16 h-16" />
               <div>
                 <div className="text-base font-bold font-orbitron metallic-text">NOVION ENERGY</div>
                 <div className="text-xs text-cyan-400 font-semibold font-mono">{COMPANY_INFO.slogan}</div>

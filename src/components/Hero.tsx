@@ -1,10 +1,9 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowRightIcon, ShieldCheckIcon, PlayIcon } from "@/components/Icons";
+import { ArrowRightIcon, ShieldCheckIcon, PlayIcon, NovionLogo } from "@/components/Icons";
 import { COMPANY_INFO } from "@/data/novionData";
 
 export default function Hero({ onOpenVideoModal }: { onOpenVideoModal: (title: string) => void }) {
@@ -35,21 +34,23 @@ export default function Hero({ onOpenVideoModal }: { onOpenVideoModal: (title: s
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
-          {/* Logo Showcase Emblem */}
-          <div className="inline-block relative mb-6 group">
-            <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl overflow-hidden border border-white/15 shadow-[0_8px_32px_0_rgba(0,0,0,0.6)] bg-black/60 backdrop-blur-2xl p-1 relative">
-              <Image
-                src="/images/novion-logo.jpg"
-                alt="Novion Energy Logo"
-                width={112}
-                height={112}
-                className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
-                priority
-              />
-              <div className="absolute inset-0 rounded-2xl ring-1 ring-cyan-400/30 pointer-events-none" />
+          {/* Scaled-Up Centered Logo Showcase Emblem */}
+          <div className="inline-block relative mb-8 group">
+            {/* Ambient soft glow beneath logo */}
+            <div className="absolute -inset-4 bg-cyan-400/20 rounded-[2.5rem] blur-2xl -z-10 group-hover:bg-cyan-400/35 transition-all duration-500" />
+
+            {/* Scaled-up 1.5x-2x container (~130px to 150px) with rounded glassmorphism & 1px cyan border */}
+            <div
+              className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 mx-auto rounded-[2rem] p-3.5 flex items-center justify-center relative overflow-hidden backdrop-blur-2xl transition-all duration-500 group-hover:scale-105"
+              style={{
+                background: "rgba(10, 14, 23, 0.8)",
+                border: "1px solid rgba(0, 210, 255, 0.35)",
+                boxShadow: "0 0 35px rgba(0, 210, 255, 0.3), inset 0 0 20px rgba(0, 210, 255, 0.08)",
+              }}
+            >
+              <NovionLogo className="w-full h-full" showBackdrop={false} />
+              <div className="absolute inset-0 rounded-[2rem] ring-1 ring-cyan-400/40 pointer-events-none" />
             </div>
-            {/* Ambient pulse beneath logo */}
-            <div className="absolute -inset-2 bg-cyan-400/15 rounded-3xl blur-xl -z-10 group-hover:bg-cyan-400/30 transition-colors" />
           </div>
 
           {/* Top Pill Badge: Elegant Glass Badge with Pulsing Electric Cyan Border */}

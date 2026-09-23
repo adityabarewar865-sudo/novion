@@ -6,11 +6,12 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import VideoModal from "@/components/VideoModal";
 import { COMPANY_INFO, SOLUTIONS, CORE_FOCUS_AREAS } from "@/data/novionData";
-import { ArrowRightIcon, ShieldCheckIcon, CpuIcon, CheckCircleIcon, PlayIcon } from "@/components/Icons";
+import { ArrowRightIcon, ShieldCheckIcon, CpuIcon, CheckCircleIcon, PlayIcon, NovionLogo } from "@/components/Icons";
 
 export default function HomePage() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [activeVideoTitle, setActiveVideoTitle] = useState("");
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
   const handleOpenVideo = (title: string) => {
     setActiveVideoTitle(title);
@@ -169,13 +170,21 @@ export default function HomePage() {
                 className="glass-panel glass-panel-hover rounded-3xl overflow-hidden flex flex-col justify-between group"
               >
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-900">
-                  <Image
-                    src={sol.image}
-                    alt={sol.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                  {!imageErrors[sol.id] ? (
+                    <Image
+                      src={sol.image}
+                      alt={sol.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      onError={() => setImageErrors((prev) => ({ ...prev, [sol.id]: true }))}
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-tr from-cyan-950/40 via-slate-900 to-blue-950/40 p-4 text-center">
+                      <NovionLogo className="w-12 h-12 mb-2 opacity-80" />
+                      <span className="text-xs font-bold font-orbitron text-cyan-300">{sol.title}</span>
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none" />
                   <div className="absolute top-3 left-3">
                     <span className="text-[10px] font-mono uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-slate-950/80 text-cyan-300 border border-cyan-500/30 backdrop-blur-md">
                       {sol.category}
@@ -239,15 +248,7 @@ export default function HomePage() {
               </div>
 
               <div className="lg:col-span-4 flex flex-col items-center">
-                <div className="w-28 h-28 rounded-3xl overflow-hidden border-2 border-cyan-400/50 shadow-[0_0_25px_rgba(0,210,255,0.4)] bg-slate-950 p-1 mb-3">
-                  <Image
-                    src="/images/novion-logo.jpg"
-                    alt="Novion Emblem"
-                    width={112}
-                    height={112}
-                    className="w-full h-full object-cover rounded-2xl"
-                  />
-                </div>
+                <NovionLogo className="w-28 h-28 mb-3" />
                 <span className="text-sm font-bold font-orbitron metallic-text">NOVION</span>
                 <span className="text-xs font-mono text-cyan-400">{COMPANY_INFO.slogan}</span>
               </div>

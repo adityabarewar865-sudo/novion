@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { COMPANY_INFO } from "@/data/novionData";
-import { MailIcon, LinkedInIcon, CheckCircleIcon, ArrowRightIcon } from "@/components/Icons";
+import { MailIcon, LinkedInIcon, CheckCircleIcon, ArrowRightIcon, NovionLogo } from "@/components/Icons";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -93,15 +92,7 @@ export default function ContactSection() {
                 <span className="text-xs font-bold font-orbitron uppercase tracking-wider text-slate-400">
                   Executive &amp; Technical Inquiries
                 </span>
-                <div className="w-9 h-9 rounded-xl overflow-hidden border border-white/15 bg-black/60 p-0.5">
-                  <Image
-                    src="/images/novion-logo.jpg"
-                    alt="Novion"
-                    width={36}
-                    height={36}
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
+                <NovionLogo className="w-9 h-9" />
               </div>
 
               <h3 className="text-2xl font-bold font-orbitron metallic-heading tracking-tight">

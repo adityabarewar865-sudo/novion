@@ -87,12 +87,11 @@ export default function VideoModal({ isOpen, onClose, videoTitle }: VideoModalPr
               setIsPlaying(!isPlaying);
             }}
             aria-label={isPlaying ? "Pause video" : "Play video"}
-            className={`absolute z-20 w-16 h-16 rounded-full btn-luxury-gradient text-slate-950 flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 cursor-pointer ${
-              isPlaying
-                ? "opacity-0 invisible pointer-events-none"
-                : "opacity-100 visible pointer-events-auto"
-            }`}
+            className="absolute z-20 w-16 h-16 rounded-full btn-luxury-gradient text-slate-950 flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 cursor-pointer"
             style={{
+              opacity: isPlaying ? 0 : 1,
+              visibility: isPlaying ? "hidden" : "visible",
+              pointerEvents: isPlaying ? "none" : "auto",
               transition: "opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease"
             }}
           >

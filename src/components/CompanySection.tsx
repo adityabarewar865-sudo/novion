@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { COMPANY_INFO, CORE_FOCUS_AREAS } from "@/data/novionData";
 import { CpuIcon, FlameIcon, BatteryIcon, ShieldCheckIcon, CheckCircleIcon, ArrowRightIcon, MailIcon, LinkedInIcon, NovionLogo } from "@/components/Icons";
+import { JATIN_PHOTO_BASE64 } from "@/data/jatinPhotoData";
 
 export default function CompanySection() {
   const [activeFocusIdx, setActiveFocusIdx] = useState(0);
@@ -53,7 +54,7 @@ export default function CompanySection() {
               <div className="relative w-full max-w-sm aspect-[3/4] rounded-3xl overflow-hidden border border-white/15 shadow-[0_8px_32px_0_rgba(0,0,0,0.7)] bg-black/60 group">
                 {!photoError ? (
                   <Image
-                    src={COMPANY_INFO.photo}
+                    src={JATIN_PHOTO_BASE64}
                     alt={COMPANY_INFO.owner}
                     fill
                     priority

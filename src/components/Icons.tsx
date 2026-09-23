@@ -1,4 +1,5 @@
 import React from "react";
+import { NOVION_LOGO_BASE64 } from "@/data/novionLogoData";
 
 export function NovionLogo({
   className = "w-10 h-10",
@@ -8,82 +9,17 @@ export function NovionLogo({
   showBackdrop?: boolean;
 }) {
   return (
-    <svg
-      viewBox="0 0 100 100"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={`shrink-0 ${className}`}
-      aria-label="Novion Logo"
-    >
-      <defs>
-        <linearGradient id="novionCyanBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#00D2FF" />
-          <stop offset="100%" stopColor="#0066FF" />
-        </linearGradient>
-        <linearGradient id="novionDiagGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#7DD3FC" />
-          <stop offset="40%" stopColor="#00D2FF" />
-          <stop offset="100%" stopColor="#0284C7" />
-        </linearGradient>
-        <linearGradient id="novionSpark" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#FFFFFF" />
-          <stop offset="100%" stopColor="#00D2FF" />
-        </linearGradient>
-        <filter id="novionGlowFilter" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="2.5" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-        </filter>
-      </defs>
-
-      {showBackdrop && (
-        <>
-          <rect
-            x="4"
-            y="4"
-            width="92"
-            height="92"
-            rx="20"
-            fill="#070A10"
-            fillOpacity="0.85"
-            stroke="rgba(0, 210, 255, 0.35)"
-            strokeWidth="1.5"
-          />
-          {/* Subtle cyber corner tech notches */}
-          <path d="M12 22 V14 H20" stroke="#00D2FF" strokeWidth="1.5" strokeLinecap="round" opacity="0.7" />
-          <path d="M80 14 H88 V22" stroke="#00D2FF" strokeWidth="1.5" strokeLinecap="round" opacity="0.7" />
-          <path d="M12 78 V86 H20" stroke="#00D2FF" strokeWidth="1.5" strokeLinecap="round" opacity="0.7" />
-          <path d="M80 86 H88 V78" stroke="#00D2FF" strokeWidth="1.5" strokeLinecap="round" opacity="0.7" />
-        </>
-      )}
-
-      {/* Electric High-Tech 'N' Vector Icon */}
-      <g filter="url(#novionGlowFilter)">
-        {/* Left Vertical Pillar */}
-        <path
-          d="M24 24 C24 22.9 24.9 22 26 22 H34 C35.1 22 36 22.9 36 24 V76 C36 77.1 35.1 78 34 78 H26 C24.9 78 24 77.1 24 76 Z"
-          fill="url(#novionCyanBlue)"
+    <div className={`relative flex items-center justify-center shrink-0 ${className}`}>
+      <div className="w-full h-full rounded-xl overflow-hidden border border-cyan-400/40 shadow-[0_0_15px_rgba(0,210,255,0.4)] bg-slate-950 relative group flex items-center justify-center">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={NOVION_LOGO_BASE64}
+          alt="Novion Logo"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
         />
-
-        {/* Dynamic Velocity Diagonal Slash */}
-        <path
-          d="M34 22 H46 L76 78 H64 Z"
-          fill="url(#novionDiagGlow)"
-        />
-
-        {/* Right Vertical Pillar */}
-        <path
-          d="M64 24 C64 22.9 64.9 22 66 22 H74 C75.1 22 76 22.9 76 24 V76 C76 77.1 75.1 78 74 78 H66 C64.9 78 64 77.1 64 76 Z"
-          fill="url(#novionCyanBlue)"
-        />
-
-        {/* Core Electric Diamond Spark */}
-        <path
-          d="M50 44 L56 50 L50 56 L44 50 Z"
-          fill="url(#novionSpark)"
-        />
-        <circle cx="50" cy="50" r="1.5" fill="#FFFFFF" />
-      </g>
-    </svg>
+        <div className="absolute inset-0 bg-cyan-400/10 pointer-events-none mix-blend-screen" />
+      </div>
+    </div>
   );
 }
 
